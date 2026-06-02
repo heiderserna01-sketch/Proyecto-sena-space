@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -36,6 +37,7 @@ mysqli_stmt_fetch($stmt);
 mysqli_stmt_close($stmt);
 mysqli_close($conexion);
 
-// Aquí puedes agregar la lógica para generar el enlace de recuperación y enviar el correo.
-echo "<script>alert('Correo válido. Revisa tu bandeja para continuar con el reestablecimiento.'); window.location='Login.html';</script>";
+$_SESSION['reset_email'] = $dbEmail;
+
+echo "<script>alert('Correo válido. Ingresa la nueva contraseña.'); window.location='New_password.html';</script>";
 ?>
