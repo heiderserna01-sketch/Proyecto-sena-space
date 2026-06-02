@@ -50,6 +50,9 @@ if (mysqli_stmt_fetch($stmt)) {
         $loginOk = true;
     } elseif (is_string($passwordText) && password_verify($password, $passwordText)) {
         $loginOk = true;
+    } elseif (is_string($passwordText) && preg_match('/^[0-9a-f]{40}$/i', $passwordText) && sha1($password) === $passwordText) {
+        // Legacy SHA1 passwords support
+        $loginOk = true;
     }
 
     if ($loginOk) {
