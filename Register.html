@@ -62,7 +62,6 @@
                           class="form-control"
                           id="registerName"
                           placeholder="Nombre"
-                          placeholder="Apellido"
                           required
                         />
                       </div>
@@ -70,10 +69,9 @@
                        <div class="form-group">
                         <input
                           type="text"
-                          name="registerName"
+                          name="registerLastName"
                           class="form-control"
-                          id="registerName"
-                          placeholder="Apellido"
+                          id="registerLastName"
                           placeholder="Apellido"
                           required
                         />
@@ -250,6 +248,8 @@
 
           let name = document.getElementById("registerName").value.trim();
 
+          let lastName = document.getElementById("registerLastName").value.trim();
+
           let email = document.getElementById("registerEmail").value.trim();
 
           let password = document.getElementById("registerPassword").value;
@@ -265,6 +265,7 @@
 
           if (
             !name ||
+            !lastName ||
             !email ||
             !password ||
             !confirmPassword ||
@@ -289,6 +290,7 @@
             LOG-IN USER
             ------------------------
             Nombre: ${name}
+            Apellido: ${lastName}
             Correo: ${email}
             Documento: ${tipoDoc}
             Número: ${cedula}
@@ -306,6 +308,7 @@
           });
 
           localStorage.setItem("userName", name);
+          localStorage.setItem("userLastName", lastName);
           localStorage.setItem("userRole", role);
           localStorage.setItem("userQR", qrData);
 
@@ -321,6 +324,9 @@
 
             let name =
                 document.getElementById("registerName").value.trim();
+
+            let lastName =
+                document.getElementById("registerLastName").value.trim();
 
             let email =
                 document.getElementById("registerEmail").value.trim();
@@ -361,6 +367,7 @@
             LOG-IN USER
             ------------------------
             Nombre: ${name}
+            Apellido: ${lastName}
             Correo: ${email}
             Documento: ${tipoDoc}
             Número: ${cedula}
@@ -385,6 +392,7 @@
             // GUARDAR EN LOCALSTORAGE
 
             localStorage.setItem("userName", name);
+            localStorage.setItem("userLastName", lastName);
             localStorage.setItem("userRole", role);
             localStorage.setItem("userQR", qrData);
 
