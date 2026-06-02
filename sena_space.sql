@@ -31,7 +31,7 @@ USE `sena_space`;
 
 CREATE TABLE `acceso` (
   `id_acceso` int(11) NOT NULL,
-  `cedula` int(11) DEFAULT NULL,
+  `cedula` bigint(20) DEFAULT NULL,
   `rol` varchar(50) DEFAULT NULL,
   `contraseña` varchar(100) DEFAULT NULL,
   `fecha_ingreso_ambiente` date DEFAULT NULL,
@@ -46,23 +46,24 @@ CREATE TABLE `acceso` (
 --
 
 CREATE TABLE `admin` (
-  `cedula` int(11) NOT NULL,
+  `cedula` bigint(20) NOT NULL,
   `correo` varchar(50) DEFAULT NULL,
   `nombre` varchar(50) DEFAULT NULL,
+  `apellido` varchar(50) DEFAULT NULL,
   `tipo_usuario` varchar(50) DEFAULT NULL,
   `tipo_documento` varchar(50) DEFAULT NULL,
-  `contraseña` varchar(50) DEFAULT NULL
+  `contraseña` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `admin`
 --
 
-INSERT INTO `admin` (`cedula`, `correo`, `nombre`, `tipo_usuario`, `tipo_documento`, `contraseña`) VALUES
-(12345698, 'kd@gmail.com', 'Kevin Jaramillo', 'Aprendiz', 'Cedula', '0'),
-(12398745, 'iv@gmail.com', 'Ivan cepeda', 'Visitante', 'Cedula', '0'),
-(123456989, 'tbmz@gmail.com', 'Sebas bedoya', 'Aprendiz', 'Cedula', '0'),
-(135832168, 'dd@gmail.com', 'Dani D', 'Varios', 'Cedula', '0');
+INSERT INTO `admin` (`cedula`, `correo`, `nombre`, `apellido`, `tipo_usuario`, `tipo_documento`, `contraseña`) VALUES
+(12345698, 'kd@gmail.com', 'Kevin Jaramillo', 'Jaramillo', 'Aprendiz', 'Cedula', '0'),
+(12398745, 'iv@gmail.com', 'Ivan cepeda', 'Cepeda', 'Visitante', 'Cedula', '0'),
+(123456989, 'tbmz@gmail.com', 'Sebas bedoya', 'Bedoya', 'Aprendiz', 'Cedula', '0'),
+(135832168, 'dd@gmail.com', 'Dani D', 'Diaz', 'Varios', 'Cedula', '0');
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,7 @@ INSERT INTO `admin` (`cedula`, `correo`, `nombre`, `tipo_usuario`, `tipo_documen
 CREATE TABLE `ambiente` (
   `id_ambiente` int(11) NOT NULL,
   `id_acceso` int(11) DEFAULT NULL,
-  `cedula` int(11) DEFAULT NULL,
+  `cedula` bigint(20) DEFAULT NULL,
   `piso` int(11) DEFAULT NULL,
   `bloque` varchar(50) DEFAULT NULL,
   `descripcion` varchar(200) DEFAULT NULL
@@ -88,7 +89,7 @@ CREATE TABLE `ambiente` (
 CREATE TABLE `notificacion` (
   `id_notificacion` int(11) NOT NULL,
   `Hora_notificacion` date DEFAULT NULL,
-  `cedula` int(11) DEFAULT NULL,
+  `cedula` bigint(20) DEFAULT NULL,
   `descripcion` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -100,7 +101,7 @@ CREATE TABLE `notificacion` (
 
 CREATE TABLE `ranking` (
   `id_ranking` int(11) NOT NULL,
-  `cedula` int(11) DEFAULT NULL,
+  `cedula` bigint(20) DEFAULT NULL,
   `calculo` float DEFAULT NULL,
   `fecha` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -113,7 +114,7 @@ CREATE TABLE `ranking` (
 
 CREATE TABLE `rap` (
   `rap` varchar(100) DEFAULT NULL,
-  `cedula` int(11) DEFAULT NULL,
+  `cedula` bigint(20) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `descripcion` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -127,7 +128,7 @@ CREATE TABLE `rap` (
 CREATE TABLE `tipo_usuario` (
   `id_tipo_usuario` int(11) NOT NULL,
   `rol` varchar(50) DEFAULT NULL,
-  `cedula` int(11) DEFAULT NULL
+  `cedula` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
