@@ -8,11 +8,13 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 
 $resetEmail = $_SESSION['reset_email'] ?? '';
+$sessionToken = $_SESSION['reset_token'] ?? '';
+$token = trim($_POST['token'] ?? '');
 $newPassword = trim($_POST['newPassword'] ?? '');
 $confirmPassword = trim($_POST['confirmPassword'] ?? '');
 
-if ($resetEmail === '') {
-    echo "<script>alert('No se encontró el correo para restablecer la contraseña. Vuelve a intentarlo.'); window.location='Forgot-password.html';</script>";
+if ($resetEmail === '' || $sessionToken === '' || $token === '' || !hash_equals($sessionToken, $token)) {
+    echo "<script>alert('No se encontró un enlace válido para restablecer la contraseña. Vuelve a intentarlo.'); window.location='Forgot-password.html';</script>";
     exit;
 }
 
