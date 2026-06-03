@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once 'conexion.php';
 require_once 'enviar.php';
 
@@ -40,17 +42,38 @@ $dbEmail = (string) $dbEmail;
 $nombre  = $nombre !== null ? (string) $nombre : null;
 
 mysqli_stmt_close($stmt);
-mysqli_close($conexion);
 
 $nombre = $nombre ?: $dbEmail;
-$token = bin2hex(random_bytes(16));
-$_SESSION['reset_email'] = $dbEmail;
-$_SESSION['reset_token'] = $token;
 
+// Asegurar la tabla de resets
+$createSql = "CREATE TABLE IF NOT EXISTS password_resets (
+  correo varchar(100) NOT NULL,
+  token varchar(64) NOT NULL,
+  expires_at datetime NOT NULL,
+  PRIMARY KEY (correo, token)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+if (!mysqli_query($conexion, $createSql)) {
+    error_log('No se pudo crear password_resets: ' . mysqli_error($conexion));
+}
+
+$token = bin2hex(random_bytes(16));
+$expiresAt = date('Y-m-d H:i:s', strtotime('+1 hour'));
+
+$insert = mysqli_prepare($conexion, "REPLACE INTO password_resets (correo, token, expires_at) VALUES (?, ?, ?)");
+if ($insert) {
+    mysqli_stmt_bind_param($insert, 'sss', $dbEmail, $token, $expiresAt);
+    mysqli_stmt_execute($insert);
+    mysqli_stmt_close($insert);
+} else {
+    error_log('Error preparando insert token: ' . mysqli_error($conexion));
+}
+
+// Construir enlace con token y correo para validación por DB
 $resetLink = sprintf(
-    'http://%s/Proyecto-sena-space/New_password.html?token=%s',
+    'http://%s/Proyecto-sena-space/New_password.html?token=%s&email=%s',
     $_SERVER['HTTP_HOST'],
-    urlencode($token)
+    urlencode($token),
+    urlencode($dbEmail)
 );
 
 $subject = 'Restablecer password LOG-IN';
@@ -64,3 +87,5 @@ if (sendEmail($dbEmail, $nombre, $subject, $body)) {
 } else {
     echo "<script>alert('No se pudo enviar el correo de restablecimiento. Intenta más tarde.'); window.location='Forgot-password.html';</script>";
 }
+
+mysqli_close($conexion);
