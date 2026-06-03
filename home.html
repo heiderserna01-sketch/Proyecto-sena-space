@@ -270,8 +270,8 @@
                                     Ajustes
                                 </a>
 
-                                  <a class="dropdown-item" href="Login.html">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+<a class="dropdown-item" href="logout.php">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Desconectar
                                 </a>
                                 </a>
@@ -511,32 +511,17 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/sb-admin-2.min.js"></script>
-
+    <script src="js/session.js"></script>
 
     <script>
-
-        // Datos usuario
-        let name = localStorage.getItem("userName");
-
-        if (name) {
-            document.getElementById("welcomeUser").innerHTML =
-                "Hola <b>" + name + "</b>, esperamos que tengas un excelente día.";
-            document.getElementById("userNameTop").textContent = name;
-        }
-
         // RELOJ
         function updateClock() {
-
             const now = new Date();
-
             const time = now.toLocaleTimeString();
-
             document.getElementById("clock").textContent = time;
-
         }
 
         setInterval(updateClock, 1000);
-
     </script>
 
 </body>
