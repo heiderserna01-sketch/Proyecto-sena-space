@@ -35,6 +35,10 @@ if (mysqli_stmt_num_rows($stmt) === 0) {
 
 mysqli_stmt_bind_result($stmt, $dbEmail, $nombre);
 mysqli_stmt_fetch($stmt);
+
+$dbEmail = (string) $dbEmail;
+$nombre  = $nombre !== null ? (string) $nombre : null;
+
 mysqli_stmt_close($stmt);
 mysqli_close($conexion);
 
@@ -49,7 +53,7 @@ $resetLink = sprintf(
     urlencode($token)
 );
 
-$subject = 'Restablecer contraseña LOG-IN';
+$subject = 'Restablecer password LOG-IN';
 $body = "<p>Hola {$nombre},</p>"
     . "<p>Haz clic en este enlace para restablecer tu contraseña:</p>"
     . "<p><a href=\"{$resetLink}\">Restablecer contraseña</a></p>"
@@ -60,4 +64,3 @@ if (sendEmail($dbEmail, $nombre, $subject, $body)) {
 } else {
     echo "<script>alert('No se pudo enviar el correo de restablecimiento. Intenta más tarde.'); window.location='Forgot-password.html';</script>";
 }
-?>
