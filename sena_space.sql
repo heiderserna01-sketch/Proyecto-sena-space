@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2026 a las 02:56:18
+-- Tiempo de generación: 03-06-2026 a las 20:16:55
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -60,10 +60,11 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`cedula`, `correo`, `nombre`, `apellido`, `tipo_usuario`, `tipo_documento`, `contraseña`) VALUES
-(12345698, 'kd@gmail.com', 'Kevin Jaramillo', 'Jaramillo', 'Aprendiz', 'Cedula', '0'),
-(12398745, 'iv@gmail.com', 'Ivan cepeda', 'Cepeda', 'Visitante', 'Cedula', '0'),
+(12345698, 'kd@gmail.com', 'Kevin', 'Jaramillo', 'Aprendiz', 'Cédula', '$2y$10$vyQ4DxhzC1RAWR5lXE5NOuYXXKQhGEY5wdmRZBBzW2L/RniYuHMj2'),
 (123456989, 'tbmz@gmail.com', 'Sebas bedoya', 'Bedoya', 'Aprendiz', 'Cedula', '0'),
-(135832168, 'dd@gmail.com', 'Dani D', 'Diaz', 'Varios', 'Cedula', '0');
+(135832168, 'dd@gmail.com', 'Dani D', 'Diaz', 'Varios', 'Cedula', '0'),
+(3251166156, 'iv@gmail.com', 'Ivan', 'Cepeda', 'Instructor', 'Cédula', '$2y$10$XCE0eZb.0id7d9hmiHlqDOArUoNhP7QsNDk0nTwEdXXkNtVO4ZM7W'),
+(231316514561, 'logpsin@gmail.com', 'log', 'in', 'Instructor', 'Cédula', '$2y$10$lbexbpG3afOw9FtBT.6VB.J.okRpAxF9IX29Ms5k5ZqimBqa7fmvO');
 
 -- --------------------------------------------------------
 
