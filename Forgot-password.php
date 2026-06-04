@@ -68,13 +68,18 @@ if ($insert) {
     error_log('Error preparando insert token: ' . mysqli_error($conexion));
 }
 
-// Construir enlace con token y correo para validación por DB
 $resetLink = sprintf(
     'http://%s/Proyecto-sena-space/New_password.html?token=%s&email=%s',
     $_SERVER['HTTP_HOST'],
     urlencode($token),
     urlencode($dbEmail)
 );
+
+// $resetLink = sprintf(
+//     'http://aca-va-el-ip/Proyecto-sena-space/New_password.html?token=%s&email=%s',
+//     urlencode($token),
+//     urlencode($dbEmail)
+// );
 
 $subject = 'Restablecer password LOG-IN';
 $body = "<p>Hola {$nombre},</p>"
