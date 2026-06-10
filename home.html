@@ -6,23 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>LOG-IN</title>
+    <title>Inicio</title>
 
     <link rel="icon" href="img/icono3.png" >
 
     <!-- Fonts -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Bootstrap -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 
-    
-
 </head>
 
 <body id="page-top">
+
     <!-- Página principal del sistema LOG‑IN -->
 
     <div id="wrapper">
@@ -32,7 +31,7 @@
 
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon">
-                    <img src="img/fondo.png" width="45">
+                    <img src="img/icono3.png" class="logo-small" alt="Logo LOG-IN">
                 </div>
 
                 <div class="sidebar-brand-text mx-2">LOG-IN</div>
@@ -46,7 +45,7 @@
                 Menú Principal
             </div>
 
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="home.html">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Inicio</span></a>
@@ -58,16 +57,16 @@
                 Gráficos
             </div>
 
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-bar"></i>
-                    <span>Ranking & linea de progreso</span></a>
+                    <span>Panel de Actividad</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="Tables.html">
                     <i class="fas fa-fw fa-project-diagram"></i>
-                    <span>RAPS</span></a>
+                    <span>Ruta de Ingresos</span></a>
             </li>
 
             <hr class="sidebar-divider">
@@ -284,201 +283,268 @@
 
                 <div class="container-fluid fade-section">
 
-                    <!-- HERO -->
-                    <div class="hero-section text-center">
+                    <!-- BANNER (HERO + CLIMA + HORA) -->
+                    <div class="hero-section p-4 p-md-5 mb-4 position-relative" style="text-align: left !important;">
+                        <div class="row align-items-center">
+                            
+                            <!-- COLUMNA IZQUIERDA BIENVENIDA -->
+                            <div class="col-lg-7 text-center text-lg-left mb-4 mb-lg-0">
+                                <h1 class="display-4 font-weight-bold text-white mb-3">Bienvenido a LOG-IN 🚀</h1>
+                                
+                                <!-- BACKEND -->
+                                <p id="welcomeUser" class="lead text-white-50 mb-3">
+                                    <!-- <?php echo "Hola " . $_SESSION['usuario_nombre'] . ", esperamos que tengas un excelente día."; ?> -->
+                                    Hola Johan Renteria, esperamos que tengas un excelente día.
+                                </p>
+                                
+                                <p class="text-white-50 mb-4" style="max-width: 500px;">
+                                    Plataforma educativa con información útil, progreso académico, recursos y herramientas.
+                                </p>
+                                
+                                <button class="hero-btn px-4 py-2">
+                                    Explorar plataforma
+                                </button>
+                            </div>
+                            
+                            <!-- COLUMNA DERECHA: TIEMPO/TEMPERATURA -->
+                            <div class="col-lg-5">
+                                <div class="p-4 rounded-lg" style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);">
+                                    
+                                    <!-- Encabezado Clima Actual -->
+                                    <div class="d-flex align-items-center justify-content-between text-white mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <!-- BACKEND El icono puede cambiar según el estado del clima -->
+                                            <i id="weather-icon" class="fas fa-cloud-sun fa-2x mr-2 text-warning"></i>
+                                            <div>
+                                                <h5 class="mb-0 font-weight-bold">Información General</h5>
+                                                <small class="text-white-50"><i class="fas fa-map-marker-alt"></i> Medellín, Colombia</small>
+                                            </div>
+                                        </div>
+                                        <!-- BACKEND Temperatura actual dinámica desde API -->
+                                        <div class="text-right">
+                                            <h3 id="current-temp" class="mb-0 font-weight-bold">22°C</h3>
+                                            <small id="weather-desc" class="text-white-50">Parcialmente nublado</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Reloj Digital Gigante -->
+                                     <div class="text-center my-3">
+                                            <div class="clock font-weight-bold text-white" id="clock" style="font-size: 2.8rem; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255,255,255,0.3);">00:00:00</div>
+    
+                                    <!-- Fecha debajo del reloj -->
+                                     <div id="fechaActual" class="text-white-50 font-weight-normal mt-1" style="font-size: 1.1rem; letter-spacing: 1px;">
+                                        Cargando fecha...
+                                    </div>
+                                </div>
 
-                        <h1>Bienvenido a LOG-IN 🚀</h1>
+                                    <!-- PRONÓSTICO PRÓXIMAMENTE -->
+                                    <p class="text-white font-weight-bold small uppercase mb-2 tracking-wider">Pronóstico de la semana</p>
+                                    <div class="row no-gutters text-center text-white mb-3">
+                                        
+                                        <!-- Día 1 -->
+                                        <div class="col col-sm-4 px-1">
+                                            <div class="py-2 rounded" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05);">
+                                                <span class="small text-white-50 d-block" id="forecast-day-1">Mañana</span>
+                                                <i class="fas fa-cloud-showers-heavy text-info my-1"></i>
+                                                <span class="d-block small font-weight-bold" id="forecast-temp-1">20°C</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Día 2 -->
+                                        <div class="col col-sm-4 px-1">
+                                            <div class="py-2 rounded" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05);">
+                                                <span class="small text-white-50 d-block" id="forecast-day-2">Viernes</span>
+                                                <i class="fas fa-sun text-warning my-1"></i>
+                                                <span class="d-block small font-weight-bold" id="forecast-temp-2">24°C</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Día 3 -->
+                                        <div class="col col-sm-4 px-1">
+                                            <div class="py-2 rounded" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05);">
+                                                <span class="small text-white-50 d-block" id="forecast-day-3">Sábado</span>
+                                                <i class="fas fa-cloud-sun text-light my-1"></i>
+                                                <span class="d-block small font-weight-bold" id="forecast-temp-3">22°C</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <!-- Recordatorio-->
+                                    <div class="p-2 rounded text-center" style="background: rgba(0, 0, 0, 0.15);">
+                                        <p class="mb-0 text-white-50" style="font-size: 0.85rem;">
+                                            <i class="fas fa-bell text-warning mr-1"></i> Recuerda revisar constantemente el pronostico de lluvia antes de salir de casa.                                        </p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+<!-- ACCESOS DIRECTOS ESTILIZADOS -->
 
-                        <p id="welcomeUser"></p>
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <p class="text-xs font-weight-bold text-uppercase text-gray-500 mb-3 tracker-spacing">Resumen de Turno e Ingresos</p>
+                            <div class="d-flex flex-wrap gap-3 dashboard-grid">
+                                
+                                <!-- VALIDAR: Validar si el usuario ya marcó entrada hoy para cambiar el texto y el color -->
+                                <div class="bg-white border-0 shadow-sm px-3 py-2.5 d-flex align-items-center card-custom-kpi">
+                                    <div class="p-2 bg-light rounded mr-3 text-success d-flex align-items-center justify-content-center icon-box-kpi">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                    </div>
+                                    <div>
+                                        <small class="text-gray-500 d-block font-weight-bold text-uppercase text-xs-custom">Registro de Hoy</small>
+                                        <!-- BACKEND: Si ya marcó, dejar 'text-success' e 'Ingreso Marcado'. Si no, cambiar a 'text-danger' y 'Pendiente' -->
+                                        <span id="statusIngreso" class="text-success font-weight-bold h6 mb-0 text-sm-custom">Ingreso Marcado</span>
+                                    </div>
+                                </div>
 
-                        <p>
-                            Plataforma educativa con información útil,
-                            progreso académico, recursos y herramientas.
-                        </p>
-                        <br>
+                                <!-- HORARIO: Traer las horas del turno que el usuario tiene asignado para el día actual -->
+                                <div class="bg-white border-0 shadow-sm px-3 py-2.5 d-flex align-items-center card-custom-kpi">
+                                    <div class="p-2 bg-light rounded mr-3 text-primary d-flex align-items-center justify-content-center icon-box-kpi">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <small class="text-gray-500 d-block font-weight-bold text-uppercase text-xs-custom">Turno Actual</small>
+                                        <!-- BACKEND: Pintar el horario dinámico de la base de datos según el usuario logueado -->
+                                        <span id="turnoAsignado" class="text-gray-800 font-weight-bold h6 mb-0 text-sm-custom">06:00 - 14:00</span>
+                                    </div>
+                                </div>
 
-                        <button class="hero-btn">
-                            Explorar plataforma
-                        </button>
+                                <!-- TOTAL HORAS: Sumar todas las horas que el usuario ha acumulado en el mes -->
+                                <div class="bg-white border-0 shadow-sm px-3 py-2.5 d-flex align-items-center card-custom-kpi">
+                                    <div class="p-2 bg-light rounded mr-3 text-warning d-flex align-items-center justify-content-center icon-box-kpi">
+                                        <i class="fas fa-user-clock"></i>
+                                    </div>
+                                    <div>
+                                        <small class="text-gray-500 d-block font-weight-bold text-uppercase text-xs-custom">Horas del Mes</small>
+                                        <!-- BACKEND: Hacer un SUM de las horas del mes actual en la tabla de registros -->
+                                        <span id="horasAcumuladas" class="text-gray-800 font-weight-bold h6 mb-0 text-sm-custom">160 Horas</span>
+                                    </div>
+                                </div>
 
+                                <!-- ALERTA / SALIDA: Mostrar la hora exacta en la que termina el turno del usuario hoy -->
+                                <div class="bg-white border-0 shadow-sm px-3 py-2.5 d-flex align-items-center card-custom-kpi">
+                                    <div class="p-2 bg-light rounded mr-3 text-info d-flex align-items-center justify-content-center icon-box-kpi">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <div>
+                                        <small class="text-gray-500 d-block font-weight-bold text-uppercase text-xs-custom">Próxima Salida</small>
+                                        <!-- BACKEND: Traer la hora de fin del turno asignado hoy -->
+                                        <span id="horaSalida" class="text-gray-800 font-weight-bold h6 mb-0 text-sm-custom">14:00 PM</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
-                    <br><br>
-                    <!-- STATS -->
-                    <div class="row fade-section">
-
-                        <div class="col-md-3 mb-4">
-                            <div class="stats-box">
-                                <i class="fas fa-users fa-2x mb-3 text-primary"></i>
-                                <div class="stats-number">1.2K</div>
-                                <p>Aprendices activos</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 mb-4">
-                            <div class="stats-box">
-                                <i class="fas fa-book-open fa-2x mb-3 text-success"></i>
-                                <div class="stats-number">48</div>
-                                <p>Cursos disponibles</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 mb-4">
-                            <div class="stats-box">
-                                <i class="fas fa-laptop-code fa-2x mb-3 text-warning"></i>
-                                <div class="stats-number">15</div>
-                                <p>Proyectos ADSO</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 mb-4">
-                            <div class="stats-box">
-                                <i class="fas fa-award fa-2x mb-3 text-danger"></i>
-                                <div class="stats-number">98%</div>
-                                <p>Satisfacción</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- CARDS -->
+                    <!-- SECCIÓN DE TRABAJO -->
                     <div class="row mt-4">
 
-                        <div class="col-md-4 mb-4">
-                            <div class="card info-card p-4 text-center">
-                                <i class="fas fa-graduation-cap"></i>
-                                <h4>Aprendizaje</h4>
-                                <p>
-                                    Accede a material educativo y recursos para mejorar tus habilidades.
-                                </p>
+                        <!-- HISTORIAL RECIENTE: Lista de las últimas 4 marcaciones o solicitudes del usuario -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card border-0 shadow-sm p-4 card-container-main">
+                                <h3 class="h5 font-weight-bold text-gray-800 mb-4 d-flex align-items-center">
+                                    <span class="p-2 bg-light mr-3 text-primary d-flex align-items-center justify-content-center icon-title-box"><i class="fas fa-history"></i></span>
+                                    Historial Reciente
+                                </h3>
+                                
+                                <!-- BACKEND: Aquí se puede meter un foreach para recorrer los últimos ingresos/salidas de la BD -->
+                                <div class="d-flex flex-column main-list-gap">
+                                    <div class="p-3 bg-light d-flex align-items-center justify-content-between row-item-custom">
+                                        <span class="text-gray-700 small font-weight-bold"><i class="fas fa-sign-out-alt text-danger mr-2"></i> Salida de Turno Registrada</span>
+                                        <span class="badge badge-pill badge-light text-gray-500 font-weight-normal px-2.5 py-1">Ayer 14:02</span>
+                                    </div>
+                                    <div class="p-3 bg-light d-flex align-items-center justify-content-between row-item-custom">
+                                        <span class="text-gray-700 small font-weight-bold"><i class="fas fa-sign-in-alt text-success mr-2"></i> Ingreso de Turno Registrado</span>
+                                        <span class="badge badge-pill badge-light text-gray-500 font-weight-normal px-2.5 py-1">Ayer 05:58</span>
+                                    </div>
+                                    <div class="p-3 bg-light d-flex align-items-center justify-content-between row-item-custom row-item-pending">
+                                        <span class="text-gray-800 small font-weight-bold"><i class="font-weight-light far fa-circle mr-2 text-primary"></i> Reportar Novedad de Horario</span>
+                                        <span class="badge badge-pill badge-primary px-2.5 py-1 font-weight-medium">Pendiente</span>
+                                    </div>
+                                    <div class="p-3 bg-light d-flex align-items-center justify-content-between row-item-custom">
+                                        <span class="text-gray-700 small font-weight-bold"><i class="fas fa-check-circle text-success mr-2"></i> Validación de Horas Extras</span>
+                                        <span class="badge badge-pill badge-light text-gray-500 font-weight-normal px-2.5 py-1">Aprobado</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-md-4 mb-4">
-                            <div class="card info-card p-4 text-center">
-                                <i class="fas fa-chart-pie"></i>
-                                <h4>Estadísticas</h4>
-                                <p>
-                                    Observa tu rendimiento y línea de progreso en tiempo real.
-                                </p>
+                        <!-- PANEL DE COMUNICADOS -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card border-0 shadow-sm p-4 card-container-main">
+                                <h3 class="h5 font-weight-bold text-gray-800 mb-4 d-flex align-items-center">
+                                    <span class="p-2 bg-light mr-3 text-success d-flex align-items-center justify-content-center icon-title-box"><i class="fas fa-bullhorn"></i></span>
+                                    Notas y Avisos del Sistema
+                                </h3>
+
+                                <div class="news-card p-3 mb-3 info-card-box">
+                                    <h6 class="font-weight-bold text-gray-900 mb-1 text-news-title">Actualización de Cronogramas</h6>
+                                    <p class="text-gray-600 small mb-0">
+                                        Los nuevos turnos del próximo mes ya están disponibles para consulta en el panel lateral de asignaciones. Recuerda verificar tu horario.
+                                    </p>
+                                </div>
+
+                                <div class="news-card p-3 info-card-box">
+                                    <h6 class="font-weight-bold text-gray-900 mb-1 text-news-title">Soporte de Marcaciones</h6>
+                                    <p class="text-gray-600 small mb-0">
+                                        Si presentas problemas al registrar tu entrada o salida desde la app, recuerda reportarlo inmediatamente con el administrador del sistema.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-md-4 mb-4">
-                            <div class="card info-card p-4 text-center">
-                                <i class="fas fa-globe"></i>
-                                <h4>Conexión</h4>
-                                <p>
-                                    Mantente conectado con plataformas oficiales del SENA.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- WEATHER -->
-                    <div class="weather-box text-center">
-                        <h3><i class="fas fa-cloud-sun"></i> Información general</h3>
-
-                        <p> Medellín, Colombia</p>
-
-                        <div class="clock" id="clock"></div>
-
-                        <p class="mt-3">
-                            Recuerda revisar constantemente Sofia Plus y tu progreso académico.
-                        </p>
-                    </div>
-                    <br><br>
                     <!-- SLIDER -->
-                    <div class="slider-frame">
 
-                        <ul>
-
-                            <li>
-                                <a href="https://www.instagram.com/senacomunica/" target="_blank">
-                                    <img src="img/instagram.png">
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="https://betowa.sena.edu.co/" target="_blank">
-                                    <img src="img/Betowa.png">
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="http://senasofiaplus.edu.co/sofia-public/" target="_blank">
-                                    <img src="img/sofia plus.png">
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="https://caprendizaje.sena.edu.co/" target="_blank">
-                                    <img src="img/SVGA.png">
-                                </a>
-                            </li>
-
-                        </ul>
-
-                    </div>
-                    <br><br>
-                    <!-- TASKS -->
                     <div class="row mt-5">
+    <div class="col-12 mb-4">
+        <h4 class="font-weight-bold text-gray-800">Recursos Académicos y Bienestar</h4>
+        <p class="text-gray-600">Herramientas clave para tu proceso de formación, desarrollo profesional y consultas institucionales.</p>
+    </div>
 
-                        <div class="col-md-6 mb-4">
-
-                            <div class="task-box">
-
-                                <h3>
-                                    <i class="fas fa-tasks text-primary"></i>
-                                    Actividades pendientes
-                                </h3>
-
-                                <ul class="mt-4">
-                                    <li>✔ Revisar RAPS</li>
-                                    <li>✔ Actualizar perfil</li>
-                                    <li>✔ Entregar evidencia ADSO</li>
-                                    <li>✔ Revisar línea de progreso</li>
-                                    <li>✔ Consultar instructor</li>
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-6 mb-4">
-
-                            <div class="task-box">
-
-                                <h3>
-                                    <i class="fas fa-bullhorn text-success"></i>
-                                    Noticias y anuncios
-                                </h3>
-
-                                <div class="news-card">
-                                    <h5> Nuevos cursos tecnológicos</h5>
-                                    <p>
-                                        El SENA ha actualizado contenido relacionado con IA,
-                                        ciberseguridad y desarrollo web.
-                                    </p>
-                                </div>
-
-                                <div class="news-card">
-                                    <h5> Actualización Sofia Plus</h5>
-                                    <p>
-                                        Revisa constantemente tus competencias y horarios.
-                                    </p>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-left-primary">
+            <div class="card-body">
+                <h6 class="font-weight-bold text-primary"><i class="fas fa-hand-holding-usd mr-2"></i>Becas y Apoyos</h6>
+                <p class="small text-gray-600 mt-2">Consulta convocatorias para becas de manutención, mérito académico y otros beneficios vigentes.</p>
+                <a href="https://www.mineducacion.gov.co/portal/micrositios-superior/Becas-SER/" target="_blank" class="btn btn-outline-primary btn-sm mt-2 btn-block">Ver convocatorias</a>
             </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-left-info">
+            <div class="card-body">
+                <h6 class="font-weight-bold text-info"><i class="fas fa-graduation-cap mr-2"></i>Oferta Académica</h6>
+                <p class="small text-gray-600 mt-2">Explora nuevos cursos, diplomados y rutas de formación profesional disponibles para tu perfil.</p>
+                <a href="https://www.coursera.org" target="_blank" class="btn btn-outline-info btn-sm mt-2 btn-block">Ver catálogo</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-left-success">
+            <div class="card-body">
+                <h6 class="font-weight-bold text-success"><i class="fas fa-book-reader mr-2"></i>Biblioteca Virtual</h6>
+                <p class="small text-gray-600 mt-2">Acceso ilimitado a bases de datos, artículos científicos, libros digitales y material de apoyo.</p>
+                <a href="https://bibliotecavirtual.upb.edu.co/pages/index.php" target="_blank" class="btn btn-outline-success btn-sm mt-2 btn-block">Acceder a recursos</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-left-warning">
+            <div class="card-body">
+                <h6 class="font-weight-bold text-warning"><i class="fas fa-gavel mr-2"></i>Normativa y Guías</h6>
+                <p class="small text-gray-600 mt-2">Consulta los estatutos estudiantiles, manuales de convivencia y guías de comportamiento ético.</p>
+                <a href="https://tdea.edu.co/sobre-el-tdea/reglamento-estudiantil/" target="_blank" class="btn btn-outline-warning btn-sm mt-2 btn-block">Ver reglamento</a>
+            </div>
+        </div>
+    </div>
+</div>
 
             <!-- FOOTER -->
             <footer class="sticky-footer bg-white">
@@ -514,16 +580,19 @@
     <script src="js/session.js"></script>
 
     <script>
-        // RELOJ
-        function updateClock() {
-            const now = new Date();
-            const time = now.toLocaleTimeString();
-            document.getElementById("clock").textContent = time;
-        }
+    function updateClock() {
+        const now = new Date();
+        
+        // Reloj
+        document.getElementById("clock").textContent = now.toLocaleTimeString();
+        
+        // Fecha 
+        const options = { weekday: 'long', day: 'numeric', month: 'long' };
+        document.getElementById("fechaActual").textContent = now.toLocaleDateString('es-CO', options);
+    }
 
-        setInterval(updateClock, 1000);
-    </script>
-
-</body>
-
-</html>
+    // Ejecutar cada segundo
+    setInterval(updateClock, 1000);
+    // Llamada inicial
+    updateClock();
+</script>

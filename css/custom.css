@@ -14,9 +14,10 @@
 }
 
 .logo-small {
-    border-radius: 50%;
-    width: 40px; 
-    height: 40px; 
+    width: 40px !important; 
+    height: 40px !important; 
+    border-radius: 50% !important;
+    object-fit: cover !important; /* Para que no se deforme el LOG-IN    */
 }
 
 /* Sidebar con gradiente más elegante */
@@ -35,12 +36,13 @@
 
 /* Marca del sidebar */
 .sidebar-brand-text {
-    font-weight: 700;
+    font-weight: 400 !important;    
     font-size: 1.3rem;
     letter-spacing: 0.5px;
     color: #fff !important;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
+
 
 /* Topbar */
 .topbar {
@@ -794,4 +796,79 @@ html, body{
 .sidebar-brand-text{
     font-size: 1.8rem;
     font-weight: 700;
+}
+
+/* --- ESTILOS PARA EL PANEL DE RESUMEN DE ASISTENCIA --- */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.card-custom-kpi {
+    border-radius: 12px;
+    background-color: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-custom-kpi:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* Caja del icono */
+.icon-box-kpi {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+}
+
+.text-xs-custom {
+    font-size: 0.7rem;
+    letter-spacing: 0.05rem;
+}
+
+.tracker-spacing {
+    letter-spacing: 0.08rem;
+}
+
+/* --- SECCIÓN DE TRABAJO (HISTORIAL)--- */
+
+.card-container-main {
+    border-radius: 12px;
+}
+
+.icon-title-box {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+}
+
+/* Lista del historial */
+.main-list-gap {
+    gap: 10px;
+}
+
+.row-item-custom {
+    border-radius: 8px;
+    border-left: 4px solid transparent;
+}
+
+.row-item-custom:hover {
+    background-color: #f8f9fc !important;
+}
+
+.row-item-pending {
+    border-left: 4px solid #4e73df; 
+}
+
+/* Notas y Avisos */
+.info-card-box {
+    border-radius: 8px;
+    background-color: #f8f9fc;
+    border-left: 3px solid #1cc88a; 
+}
+
+.text-news-title {
+    color: #2e59d9;
 }
