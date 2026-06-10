@@ -75,8 +75,9 @@ $resetLink = sprintf(
     urlencode($dbEmail)
 );
 
+// suministrar la ip cada que se hagan pruebas
 // $resetLink = sprintf(
-//     'http://aca-va-el-ip/Proyecto-sena-space/New_password.html?token=%s&email=%s',
+//     'http://aca-va-la-ip/Proyecto-sena-space/New_password.html?token=%s&email=%s',
 //     urlencode($token),
 //     urlencode($dbEmail)
 // );
