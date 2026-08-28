@@ -62,7 +62,6 @@
                           class="form-control"
                           id="registerName"
                           placeholder="Nombre"
-                          placeholder="Apellido"
                           required
                         />
                       </div>
@@ -70,10 +69,9 @@
                        <div class="form-group">
                         <input
                           type="text"
-                          name="registerName"
+                          name="registerLastName"
                           class="form-control"
-                          id="registerName"
-                          placeholder="Apellido"
+                          id="registerLastName"
                           placeholder="Apellido"
                           required
                         />
@@ -283,6 +281,8 @@
           e.preventDefault();
 
           let name = document.getElementById("registerName").value.trim();
+          let lastName = document.getElementById("registerLastName").value.trim();
+          let fullName = name + ' ' + lastName;
 
           let email = document.getElementById("registerEmail").value.trim();
 
@@ -300,6 +300,7 @@
 
           if (
             !name ||
+            !lastName ||
             !email ||
             !password ||
             !confirmPassword ||
@@ -323,7 +324,7 @@
           const qrData = `
             LOG-IN USER
             ------------------------
-            Nombre: ${name}
+            Nombre: ${fullName}
             Correo: ${email}
             Documento: ${tipoDoc}
             Número: ${cedula}
@@ -340,7 +341,7 @@
             margin: 2,
           });
 
-          localStorage.setItem("userName", name);
+          localStorage.setItem("userName", fullName);
           localStorage.setItem("userRole", role);
           localStorage.setItem("userQR", qrData);
 
