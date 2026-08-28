@@ -1,0 +1,26 @@
+# Archivos temporales
+~$*
+.~lock.*
+*.lock
+*.tmp
+*.temp
+*.bak
+*.old
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Dependencias y archivos generados
+node_modules/
+
+# Logs
+*.log
+
+# Copias de seguridad
+copias/
+backup/
+backups/
